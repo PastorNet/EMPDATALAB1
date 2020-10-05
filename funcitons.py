@@ -15,11 +15,11 @@ def find_broken_data(data, sigma):
     while i < len(data):
         srx += data[i]
         i += 1
-    srx_r = (1/len(data)*srx)
-    lower_lim = srx_r - sigma*3
-    upper_lim = srx_r + sigma*3
+    srx_r = (1 / len(data) * srx)
+    lower_lim = srx_r - sigma * 3
+    upper_lim = srx_r + sigma * 3
     while j < len(data):
-        if data[j] > upper_lim or data[j] < lower_lim :
+        if data[j] > upper_lim or data[j] < lower_lim:
             anomalies.append(data[j])
         else:
             clear_data.append(data[j])
@@ -38,7 +38,7 @@ def mx(data):
     while i < len(data):
         mx_ += data[i]
         i += 1
-    return (1/i)*mx_
+    return (1 / i) * mx_
 
 
 def disp(data, mx_):
@@ -47,15 +47,10 @@ def disp(data, mx_):
     while i < len(data):
         disp_ += (data[i] - mx_) ** 2
         i += 1
-    return (1/i)*disp_
+    return (1 / i) * disp_
 
 
 def histogram(data):
     sns.set_theme()
-    ax = sns.histplot(data,  kde=True)
-
+    ax = sns.distplot(data, kde=True, kde_kws={'kernel':'gau'})
     return ax
-
-
-
-
